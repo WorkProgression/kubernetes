@@ -1,11 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Update hosts file
 echo "[TASK 1] Update /etc/hosts file"
 cat >>/etc/hosts<<EOF
-172.42.42.100 kmaster.example.com kmaster
-172.42.42.101 kworker1.example.com kworker1
-172.42.42.102 kworker2.example.com kworker2
+172.42.42.100 kmaster
+172.42.42.101 kworker1
+172.42.42.102 kworker2
 EOF
 
 # Install docker from Docker-ce repository
@@ -74,4 +74,4 @@ echo "[TASK 12] Set root password"
 echo "kubeadmin" | passwd --stdin root >/dev/null 2>&1
 
 # Update vagrant user's bashrc file
-echo "export TERM=xterm" >> /etc/bashrc
+#echo "export TERM=xterm" >> /etc/bashrc

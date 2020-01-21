@@ -1,5 +1,4 @@
-
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Initialize Kubernetes
 echo "[TASK 1] Initialize Kubernetes Cluster"
