@@ -11,6 +11,8 @@ spec:
       labels:
         demotype: nginx-daemonset-demo
     spec:
+      nodeSelector:
+        disktype: ssd
       containers:
       - image: nginx
         name: nginx
