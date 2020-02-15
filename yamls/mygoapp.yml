@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: mygoapp
+  name: mygoapp-deploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: mygoapp
+  template:
+    metadata:
+      labels:
+        run: mygoapp
+    spec:
+      containers:
+      - name: mygoapp
+        image: 134166088785.dkr.ecr.eu-central-1.amazonaws.com/gowiki:1.2.2
+      imagePullSecrets:
+      - name: regcred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: mygoapp
+  name: mygoapp-svc
+  namespace: default
+spec:
+  ports:
+  - nodePort: 32301
+    protocol: TCP
+    port: 8080
+    targetPort: 8080
+  selector:
+    run: mygoapp
+  type: NodePort
